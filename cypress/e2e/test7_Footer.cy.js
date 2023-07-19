@@ -1,7 +1,7 @@
 describe("Footer", () => {
   beforeEach(() => {
     // Відкриття сторінку логанізації
-    cy.visit("http://localhost:3001/TeamName-project/signin");
+    cy.visit("http://localhost:3000/TeamName-project/signin");
   });
 
   it("should sign in with email and password, then check page elements", () => {
