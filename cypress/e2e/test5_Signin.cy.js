@@ -6,21 +6,21 @@ describe('Sign In', () => {
 
   it('should sign in with email and password', () => {
     // Введення електронної пошти
-    cy.get('.sc-gSsSbr > :nth-child(1) > .sc-khcxGw').type(
-      'dudkomykola@icloud.com'
+    cy.get(".sc-lbFxqA > :nth-child(1) > .sc-hTlBmN").type(
+      "dudkomykola@gmail.com"
     );
 
     // Введення пароля
-    cy.get('#password').type('Dudko_78');
+    cy.get("#password").type("M15032005o");
 
     // Знаходимо кнопку "Sign in" і симулюємо наведення (hover) на неї
-    cy.get('.sc-hTlBmN').trigger('mouseover');
+    cy.get(".sc-jgjOva").trigger("mouseover");
 
     // Симулюємо фокус на кнопку "Sign in"
-    // cy.get('.sc-bBPCrp').focus();
+    // cy.get('.sc-jgjOva').focus();
 
     // Клік на кнопку "Sign in"
-    cy.get('.sc-hTlBmN').click();
+    cy.get(".sc-jgjOva").click();
   });
 });
 
