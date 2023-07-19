@@ -6,7 +6,7 @@ describe('Sign In and Check Elements', () => {
 
   it('should sign in with email and password, then check page elements', () => {
     // Entering email
-    cy.get(".sc-lbFxqA > :nth-child(1) > .sc-hTlBmN").type(
+    cy.get(".sc-iTpZeM > :nth-child(1) > .sc-cjxVAP").type(
       "dudkomykola@gmail.com"
     );
 
@@ -14,20 +14,20 @@ describe('Sign In and Check Elements', () => {
     cy.get("#password").type("M15032005o");
 
     // We find the "Sign in" button and simulate hovering over it
-    cy.get(".sc-jgjOva").trigger("mouseover");
+    cy.get(".sc-jdbXwy").trigger("mouseover");
 
     // Simulate focus on the "Sign in" button"
-    // cy.get('.sc-jgjOva').focus();
+    // cy.get('.sc-jdbXwy').focus();
 
     // Click on the "Sign in" button"
-    cy.get(".sc-jgjOva").click();
+    cy.get(".sc-jdbXwy").click();
     //cy.wait(2000); // Pause for 2 seconds
 
     // Check that the password input field is gone
     cy.get("#password").should("not.exist");
 
     // Checking the presence of the "DrinkMaster" logo
-    cy.get(".sc-dkHyXG > .sc-cseZMA").should("contain", "DrinkMaster");
+    cy.get(".sc-dkHyXG > .sc-eodsR").should("contain", "DrinkMaster");
 
     // Checking the presence of the navigation menu
     //cy.get(".sc-grNJuD > :nth-child(1)").contains("Home").should("be.visible");
@@ -43,13 +43,13 @@ describe('Sign In and Check Elements', () => {
     // .should("be.visible");
 
     // Checking for a dark/light switch
-    cy.get(".sc-bBQvrP").should("exist");
+    cy.get(".sc-ivuxny").should("exist");
 
     // Switch to light theme
-    cy.get(".sc-bBQvrP").click();
+    cy.get(".sc-ivuxny").click();
     //cy.wait(2000); // Pause for 2 seconds
     //cy.get(".sc-bBQvrP").should("have.text", "Light Mode");
-    cy.get(".sc-bBQvrP").should("have.text", "switch to light theme"); // Перевірити, що змінився логотип на сонце
+    cy.get(".sc-ivuxny").should("have.text", "switch to light theme"); // Перевірити, що змінився логотип на сонце
 
     // Switch to Dark theme
     cy.get(".sc-bBQvrP").click();
@@ -60,11 +60,11 @@ describe('Sign In and Check Elements', () => {
     cy.get(".sc-fFnglj").should("exist");
 
     // "Profile"
-    cy.get(".sc-fFnglj").click();
+    cy.get(".sc-bjvyHW").click();
     cy.wait(2000); // Pause for 2 seconds
 
     // "Log out"
-    cy.get(".sc-ivuxny").click();
+    cy.get(".sc-cxhXjG").click();
   });
 });
 

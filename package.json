@@ -13,7 +13,9 @@
     "@testing-library/user-event": "^13.5.0",
     "aos": "^2.3.4",
     "axios": "^1.4.0",
+    "cypress": "^12.17.1",
     "formik": "^2.4.2",
+    "mode": "^0.3.2",
     "notiflix": "^3.2.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -61,9 +63,13 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
-    "cypress": "^12.17.1",
     "file-loader": "^6.2.0",
     "svg-url-loader": "^8.0.0",
     "url-loader": "^4.1.1"
-  }
+  },
+  "description": "This project was created with [Create React App](https://github.com/facebook/create-react-app). To get acquainted and configure additional features [refer to documentation](https://facebook.github.io/create-react-app/docs/getting-started).",
+  "main": "cypress.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
