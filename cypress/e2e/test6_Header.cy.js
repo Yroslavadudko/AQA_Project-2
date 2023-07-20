@@ -1,12 +1,12 @@
 describe('Sign In and Check Elements', () => {
   beforeEach(() => {
     // Opening the login page
-    cy.visit('http://localhost:3000/TeamName-project/signin');
+    cy.visit('http://localhost:3001/TeamName-project/signin');
   });
 
   it('should sign in with email and password, then check page elements', () => {
     // Entering email
-    cy.get(".sc-iTpZeM > :nth-child(1) > .sc-cjxVAP").type(
+    cy.get(".sc-gJbavg > :nth-child(1) > .sc-csnruV").type(
       "dudkomykola@gmail.com"
     );
 
@@ -14,23 +14,23 @@ describe('Sign In and Check Elements', () => {
     cy.get("#password").type("M15032005o");
 
     // We find the "Sign in" button and simulate hovering over it
-    cy.get(".sc-jdbXwy").trigger("mouseover");
+    cy.get(".sc-dFlEDi").trigger("mouseover");
 
     // Simulate focus on the "Sign in" button"
-    // cy.get('.sc-jdbXwy').focus();
+    // cy.get('.sc-dFlEDi').focus();
 
     // Click on the "Sign in" button"
-    cy.get(".sc-jdbXwy").click();
+    cy.get(".sc-dFlEDi").click();
     //cy.wait(2000); // Pause for 2 seconds
 
     // Check that the password input field is gone
     cy.get("#password").should("not.exist");
 
     // Checking the presence of the "DrinkMaster" logo
-    cy.get(".sc-dkHyXG > .sc-eodsR").should("contain", "DrinkMaster");
+    cy.get(".sc-gsMHZj > .sc-ckohTs").should("contain", "DrinkMaster");
 
     // Checking the presence of the navigation menu
-    //cy.get(".sc-grNJuD > :nth-child(1)").contains("Home").should("be.visible");
+    //cy.get(".sc-bjmMVV > :nth-child(1)").contains("Home").should("be.visible");
     //cy.get(".sc-fxDHCw > :nth-child(2)").contains("Drinks").should("be.visible");
     //cy.get(".sc-glhZnD > :nth-child(3)")
     //.contains("Add recipe")
@@ -43,28 +43,33 @@ describe('Sign In and Check Elements', () => {
     // .should("be.visible");
 
     // Checking for a dark/light switch
-    cy.get(".sc-ivuxny").should("exist");
+    cy.get(".sc-hOjwQh").should("exist");
 
     // Switch to light theme
-    cy.get(".sc-ivuxny").click();
+    cy.get(".sc-hOjwQh").click();
     //cy.wait(2000); // Pause for 2 seconds
     //cy.get(".sc-bBQvrP").should("have.text", "Light Mode");
-    cy.get(".sc-ivuxny").should("have.text", "switch to light theme"); // Перевірити, що змінився логотип на сонце
+    cy.get(".sc-hOjwQh").should("have.text", "switch to light theme"); // Перевірити, що змінився логотип на сонце
 
     // Switch to Dark theme
-    cy.get(".sc-bBQvrP").click();
+    cy.get(".sc-hOjwQh").click();
     //cy.wait(2000); // Pause for 2 seconds
-    cy.get(".sc-bBQvrP").should("have.text", "switch to dark theme");
+    cy.get(".sc-hOjwQh").should("have.text", "switch to dark theme");
 
     // Checking the presence of the "Profile" menu
-    cy.get(".sc-fFnglj").should("exist");
+    cy.get(".sc-jIsSBh").should("exist");
 
     // "Profile"
-    cy.get(".sc-bjvyHW").click();
-    cy.wait(2000); // Pause for 2 seconds
+    cy.get(".sc-jIsSBh").click();
+    //cy.wait(2000); // Pause for 2 seconds
 
     // "Log out"
-    cy.get(".sc-cxhXjG").click();
+    cy.get(".sc-jsDmXc").click();
+    cy.get(".sc-EtGjI > :nth-child(1)").click();
+
+    // exit
+    cy.get("#NXReportButton").click();
+
   });
 });
 

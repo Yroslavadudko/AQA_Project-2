@@ -7,7 +7,7 @@ describe("Add Recipe", () => {
     cy.visit("http://localhost:3000/TeamName-project/signin");
 
     // Entering email
-    cy.get(".sc-fvoBTw > :nth-child(1) > .sc-cZVKEv").type(
+    cy.get(".sc-gJbavg > :nth-child(1) > .sc-csnruV").type(
       "dudkomykola@gmail.com"
     );
 
@@ -15,13 +15,13 @@ describe("Add Recipe", () => {
     cy.get("#password").type("M15032005o");
 
     // We find the "Sign in" button and simulate hovering over it
-    cy.get(".sc-jTzMAe").trigger("mouseover");
+    cy.get(".sc-dFlEDi").trigger("mouseover");
 
     // Simulate focus on the "Sign in" button"
-    // cy.get('.sc-jTzMAe').focus();
+    // cy.get('.sc-dFlEDi').focus();
 
     // Click on the "Sign in" button"
-    cy.get(".sc-jTzMAe").click();
+    cy.get(".sc-dFlEDi").click();
     //cy.wait(2000); // Pause for 2 seconds
 
     // Check that the password input field is gone
