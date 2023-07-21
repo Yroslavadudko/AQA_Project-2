@@ -7,7 +7,7 @@ describe("Footer", () => {
   it("should sign in with email and password, then check page elements", () => {
     // Введення електронної пошти
     cy.get(".sc-gJbavg > :nth-child(1) > .sc-csnruV").type(
-      "hoyove8996@paldept.com"
+      "kesidon643@muzitp.com"
     );
 
     // Введення пароля
@@ -65,7 +65,7 @@ describe("Footer", () => {
     // );
 
     // Відправка форми з валідним емейлом та перевірка підписки
-    cy.get(".sc-csnruV").type("hoyove8996@paldept.com");
+    cy.get(".sc-csnruV").type("kesidon643@muzitp.com");
     cy.get('.sc-ymkpK').click();
     //cy.get("#NXReportButton").click();
 
