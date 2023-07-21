@@ -73,8 +73,6 @@ describe('Sign In and Check Elements', () => {
   });
 });
 
-//.sc-fFnglj
-// .sc-idHovd
-// .sc-dHPGRQ
+
 
 

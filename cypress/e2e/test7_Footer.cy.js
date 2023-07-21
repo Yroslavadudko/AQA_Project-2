@@ -1,30 +1,30 @@
 describe("Footer", () => {
   beforeEach(() => {
-    // Відкриття сторінку логанізації
+    // Opening the login page
     cy.visit("http://localhost:3000/TeamName-project/signin");
   });
 
   it("should sign in with email and password, then check page elements", () => {
-    // Введення електронної пошти
+    // Entering email
     cy.get(".sc-evkebx > :nth-child(1) > .sc-dFlEDi").type(
       "kesidon643@muzitp.com"
     );
 
-    // Введення пароля
+    // Password entry
     cy.get("#password").type("M15032005o");
 
-    // Знаходимо кнопку "Sign in" і симулюємо наведення (hover) на неї
+    // We find the "Sign in" button and simulate hovering over it
     cy.get(".sc-bruIjz").trigger("mouseover");
 
-    // Симулюємо фокус на кнопку "Sign in"
+    // We simulate focus on the "Sign in" button
     // cy.get('.sc-bruIjz').focus();
 
-    // Клік на кнопку "Sign in"
+    // Click on the "Sign in" button
     cy.get(".sc-bruIjz").click();
     // cy.wait(2000); // Пауза на 2 секунди
     cy.get("#password").should("not.exist");
 
-    // Перевірка наявності логотипу та перевірка переадресації при його кліку
+    // Checking for the presence of the logo and checking for redirection when it is clicked
     cy.get(".sc-gsMHZj > .sc-fcoGWP")
       //.should("have.attr", "src")
       .should("contain", "DrinkMaster");
@@ -50,33 +50,22 @@ describe("Footer", () => {
     //.should("have.attr", "href")
     // .and("include", "/user/favorites");
 
-    // Перевірка наявності форми підписки
+    // Checking the availability of the subscription form
     cy.get(".sc-dFlEDi").should("exist");
 
-    // Валідація поля для вводу емейла
-    //cy.get(".sc-hTlBmN").type("dudkomykola@gmail.com");
-    //cy.get(".sc-ehLHmL").should("be.disabled");
-
-    //cy.get('footer form.subscription-form input[type="email"]')
-    // .clear()
-    // .type("valid_email@example.com");
-    //cy.get('footer form.subscription-form button[type="submit"]').should(
-    // "be.enabled"
-    // );
-
-    // Відправка форми з валідним емейлом та перевірка підписки
+    // Submit the form with a valid email address and verify your subscription
     cy.get(".sc-dFlEDi").type("kesidon643@muzitp.com");
     cy.get(".sc-dXhBGb").click();
     cy.get("#NXReportButton").click();
 
-    // Перевірка наявності блоку "Follow us"
+    // Checking the presence of the "Follow us" block
     cy.get(".sc-ipUqZP").should("exist");
 
-    // Отримуємо всі посилання на соціальні мережі
+    // We get all the links to social networks
     cy.get(".sc-ipUqZP")
       .find("a")
       .then((links) => {
-        // Перевірка наявності 3 посилань на соціальні мережі
+        // Check for 3 links to social networks
         cy.wrap(links).should("have.length", 3);
       });
 
