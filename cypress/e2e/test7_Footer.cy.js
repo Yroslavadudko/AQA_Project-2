@@ -6,7 +6,7 @@ describe("Footer", () => {
 
   it("should sign in with email and password, then check page elements", () => {
     // Введення електронної пошти
-    cy.get(".sc-gJbavg > :nth-child(1) > .sc-csnruV").type(
+    cy.get(".sc-evkebx > :nth-child(1) > .sc-dFlEDi").type(
       "kesidon643@muzitp.com"
     );
 
@@ -14,18 +14,18 @@ describe("Footer", () => {
     cy.get("#password").type("M15032005o");
 
     // Знаходимо кнопку "Sign in" і симулюємо наведення (hover) на неї
-    cy.get(".sc-dFlEDi").trigger("mouseover");
+    cy.get(".sc-bruIjz").trigger("mouseover");
 
     // Симулюємо фокус на кнопку "Sign in"
-    // cy.get('.sc-dFlEDi').focus();
+    // cy.get('.sc-bruIjz').focus();
 
     // Клік на кнопку "Sign in"
-    cy.get(".sc-dFlEDi").click();
+    cy.get(".sc-bruIjz").click();
     // cy.wait(2000); // Пауза на 2 секунди
     cy.get("#password").should("not.exist");
 
     // Перевірка наявності логотипу та перевірка переадресації при його кліку
-    cy.get(".sc-jTkTEj > .sc-ckohTs")
+    cy.get(".sc-gsMHZj > .sc-fcoGWP")
       //.should("have.attr", "src")
       .should("contain", "DrinkMaster");
     //cy.get(".sc-dkHyXG > .sc-cseZMA").click();
@@ -51,7 +51,7 @@ describe("Footer", () => {
     // .and("include", "/user/favorites");
 
     // Перевірка наявності форми підписки
-    cy.get(".sc-csnruV").should("exist");
+    cy.get(".sc-dFlEDi").should("exist");
 
     // Валідація поля для вводу емейла
     //cy.get(".sc-hTlBmN").type("dudkomykola@gmail.com");
@@ -65,9 +65,9 @@ describe("Footer", () => {
     // );
 
     // Відправка форми з валідним емейлом та перевірка підписки
-    cy.get(".sc-csnruV").type("kesidon643@muzitp.com");
-    cy.get('.sc-ymkpK').click();
-    //cy.get("#NXReportButton").click();
+    cy.get(".sc-dFlEDi").type("kesidon643@muzitp.com");
+    cy.get(".sc-dXhBGb").click();
+    cy.get("#NXReportButton").click();
 
     // Перевірка наявності блоку "Follow us"
     cy.get(".sc-ipUqZP").should("exist");
