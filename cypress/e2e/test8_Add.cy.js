@@ -7,7 +7,7 @@ describe("Add Recipe", () => {
     cy.visit("http://localhost:3000/TeamName-project/signin");
 
     // Entering email
-    cy.get(".sc-evkebx > :nth-child(1) > .sc-dFlEDi").type(
+    cy.get(".sc-tRvzt > :nth-child(1) > .sc-dkllcU").type(
       "dudkomykola@gmail.com"
     );
 

@@ -6,7 +6,7 @@ describe('Sign In', () => {
 
   it('should sign in with email and password', () => {
     // Введення електронної пошти
-    cy.get(".sc-lbFxqA > :nth-child(1) > .sc-hTlBmN").type(
+    cy.get(".sc-tRvzt > :nth-child(1) > .sc-dkllcU").type(
       "dudkomykola@gmail.com"
     );
 
@@ -14,13 +14,13 @@ describe('Sign In', () => {
     cy.get("#password").type("M15032005o");
 
     // Знаходимо кнопку "Sign in" і симулюємо наведення (hover) на неї
-    cy.get(".sc-jgjOva").trigger("mouseover");
+    cy.get(".sc-WuoJl").trigger("mouseover");
 
     // Симулюємо фокус на кнопку "Sign in"
-    // cy.get('.sc-jgjOva').focus();
+    // cy.get('.sc-WuoJl').focus();
 
     // Клік на кнопку "Sign in"
-    cy.get(".sc-jgjOva").click();
+    cy.get(".sc-WuoJl").click();
   });
 });
 
