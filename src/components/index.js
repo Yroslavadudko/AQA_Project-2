@@ -39,6 +39,7 @@ export * from './Buttons/LogoutButton/LogoutBtn';
 
 // Buttons
 
+export * from './Buttons/ReusableButton';
 export * from './BurgerMenu/Button/Button';
 export * from './Buttons/AddYourCocktail/AddYourCocktail';
 export * from './Buttons/DeleteButton/DeleteButton';
@@ -48,7 +49,7 @@ export * from './Buttons/SeeButton/SeeButton';
 
 // Forms
 
-export * from './RegisterForm/RegisterForm';
+export * from './Forms/RegisterForm/RegisterForm';
 export * from './Forms/SigninForm/SigninForm';
 export * from './Forms/AddRecipeForm/AddRecipeForm';
 export * from './Forms/SubscribeForm/SubscribeForm';

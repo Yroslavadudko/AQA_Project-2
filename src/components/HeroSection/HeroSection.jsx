@@ -1,19 +1,15 @@
-import React from 'react';
-
+import { useSelector } from 'react-redux';
+import { selectTheme } from 'redux/selectors';
+import { useNavigate } from 'react-router';
+import { Container, ReusableButton } from 'components';
 import { StyledMainPageTitle } from 'components/MainPageTitle/MainPageTitle.styled';
-import {
-  Hero,
-  Herobackground,
-  Herodescription,
-  Herowrapper,
-} from './Hero.styled';
-// import AddRecipe from 'components/Buttons/HeroButton/AddRecipe';
-
-import { AddRecipe, Container } from 'components';
+import { Hero, Herodescription, Herowrapper } from './Hero.styled';
 
 export const HeroSection = () => {
+  const currentTheme = useSelector(selectTheme);
+  const navigate = useNavigate();
   return (
-    <Hero>
+    <Hero currentTheme={currentTheme}>
       <Container>
         <Herowrapper>
           <StyledMainPageTitle>
@@ -24,7 +20,13 @@ export const HeroSection = () => {
             destination for exploring, crafting, and mastering the world's
             finest beverages.
           </Herodescription>
-          <AddRecipe />
+          <ReusableButton
+            text="Add Recipe"
+            ariaLabel="Button to open Add Recipe Page"
+            onClick={() => {
+              navigate('/main/add');
+            }}
+          />
         </Herowrapper>
       </Container>
       {/* <Herobackground></Herobackground> */}

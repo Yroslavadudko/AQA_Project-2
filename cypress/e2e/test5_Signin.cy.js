@@ -6,9 +6,9 @@ describe('Sign In', () => {
 
   it('should sign in with email and password', () => {
     // Введення електронної пошти
-    cy.get(".sc-tRvzt > :nth-child(1) > .sc-dkllcU").type(
-      "dudkomykola@gmail.com"
-    );
+    // cy.get(".sc-tRvzt > :nth-child(1) > .sc-dkllcU").type(
+      // "dudkomykola@gmail.com"
+    // );
 
     // Введення пароля
     cy.get("#password").type("M15032005o");

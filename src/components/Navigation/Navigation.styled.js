@@ -1,3 +1,4 @@
+import { devices } from 'constants';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -28,5 +29,20 @@ export const StyledLink = styled(NavLink)`
   &:hover,
   &:active {
     background-color: ${props => props.theme.secondBtnHoverColor};
+  }
+  &.active {
+    background-color: ${props => props.theme.secondBtnHoverColor};
+  }
+`;
+
+export const StyledList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+
+  @media ${devices.desktop} {
+    flex-direction: row;
   }
 `;

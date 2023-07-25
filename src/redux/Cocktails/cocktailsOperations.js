@@ -62,7 +62,7 @@ export const getCocktailByIdThunk = createAsyncThunk(
 
 export const searchAllDrinksThunk = createAsyncThunk(
   '@@cocktails/search',
-  async ({ search, page }, { rejectWithValue, getState }) => {
+  async ({ search, page, limit }, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
       return rejectWithValue();
@@ -73,6 +73,8 @@ export const searchAllDrinksThunk = createAsyncThunk(
       search.chosenCategory && (params.category = search.chosenCategory);
       search.chosenIngredient && (params.ingredient = search.chosenIngredient);
       search.query && (params.query = search.query);
+      params.page = page;
+      params.limit = limit;
       const res = await instance.get('search', {
         params,
       });
@@ -171,14 +173,19 @@ export const addRecipeThunk = createAsyncThunk(
 
 export const getAllOwnDrinksThunk = createAsyncThunk(
   '@@cocktails/ownCocktails',
-  async (_, { rejectWithValue, getState }) => {
+  async ({page, limit}, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
       return rejectWithValue();
     }
     setToken(token);
+    const params = {};
+    params.page= page;
+    params.limit = limit;
     try {
-      const res = await instance.get('own');
+      const res = await instance.get('own', {
+        params
+      });
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);
@@ -207,14 +214,19 @@ export const removeRecipeThunk = createAsyncThunk(
 
 export const getAllFavoriteDrinksThunk = createAsyncThunk(
   '@@cocktails/favorites',
-  async (_, { rejectWithValue, getState }) => {
+  async ({page, limit}, { rejectWithValue, getState }) => {
     const token = selectAuthAccessToken(getState());
     if (!token) {
       return rejectWithValue();
     }
     setToken(token);
+    const params = {};
+    params.page= page;
+    params.limit = limit;
     try {
-      const res = await instance.get('favorite');
+      const res = await instance.get('favorite', {
+        params
+      });
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response.status);

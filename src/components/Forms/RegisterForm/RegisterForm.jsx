@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { registrationThunk } from 'redux/Auth/authOperations';
-import * as Yup from 'yup';
 import { useSearchParams } from 'react-router-dom';
 import { verifyThunk } from 'redux/Auth/authOperations';
 import { AuthNavigate } from 'components';
 import { handleEyeClick } from 'redux/Auth/authSlice';
 import { selectIsClicked } from 'redux/selectors';
+import { RegisterSchema } from './ValidationSchema';
 import {
   StyledButton,
   StyledError,
@@ -40,23 +40,6 @@ export const RegisterForm = () => {
     dispatch(handleEyeClick());
   };
 
-  // useEffect(() => {
-  // const input = document.querySelector('#password');
-
-  // const togglePasswordVisibility = () => {
-  // if (input.type === 'password') {
-  // const dummyText = Array(input.value.length + 1).join('*');
-  // input.value = dummyText;
-  // }
-  // };
-
-  // input.addEventListener('keyup', togglePasswordVisibility);
-
-  // return () => {
-  // input.removeEventListener('keyup', togglePasswordVisibility);
-  // };
-  // }, []);
-
   return (
     <StyledForm
       initialValues={{
@@ -64,29 +47,7 @@ export const RegisterForm = () => {
         email: '',
         password: '',
       }}
-      validationSchema={Yup.object({
-        name: Yup.string()
-          .matches(
-            /^[a-zA-Zа-яєїієґҐА-ЯЄЇІЄҐҐ'0-9]+$/,
-            'Name can only contain letters or numbers.'
-          )
-          .required('Required'),
-        email: Yup.string()
-          .matches(
-            /^[a-zA-Z0-9.~+_-]+@[^\s@]+\.[^\s@]+$/,
-            'This is an ERROR email'
-          )
-          .required('Required'),
-        password: Yup.string()
-          .required('No password provided.')
-          .min(6, 'Password is too short - should be 6 chars minimum.')
-          .max(16, 'Password is too long - should be 16 chars maximum.')
-          .matches(
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
-            'Password must contain 1 lowercase, 1 uppercase letter and 1 number.'
-          ),
-      })}
-      // validateOnChange={true}
+      validationSchema={RegisterSchema}
       onSubmit={values => {
         dispatch(registrationThunk(values));
       }}

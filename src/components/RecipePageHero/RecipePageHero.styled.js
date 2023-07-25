@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const StyledGlassServi = styled.p`
   font-size: 12px;
   line-height: calc(14 / 12);
-  font-style: normal;
   font-weight: 400;
 
   color: ${props => props.theme.sectionTagTitle};
@@ -23,7 +22,6 @@ export const StyledGlassServi = styled.p`
 export const StyledAboutContent = styled.p`
   color: ${props => props.theme.textColor};
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: calc(18 / 14);
 
@@ -47,7 +45,6 @@ export const StyledButton = styled.button`
 
   cursor: pointer;
   font-size: 14px;
-  font-style: normal;
   font-weight: 600;
   line-height: calc(18 / 14);
   color: ${props => props.theme.btnHoverColor};
