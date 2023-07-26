@@ -28,10 +28,17 @@ const persistConfigForUserInfo = {
   whitelist: ['theme', 'user', 'firstRender'],
 };
 
+const persistConfigForCocktails = {
+  key: 'cocktails',
+  version: 3,
+  storage,
+  whitelist: ['cocktails', 'ingredients', 'categories', 'glasses'],
+};
+
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
-    cocktails: cocktailsReducer,
+    cocktails: persistReducer(persistConfigForCocktails, cocktailsReducer),
     userInfo: persistReducer(persistConfigForUserInfo, userInfoReducer),
   },
   middleware: getDefaultMiddleware =>

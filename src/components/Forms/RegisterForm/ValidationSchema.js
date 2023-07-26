@@ -33,3 +33,19 @@ export const LoginSchema = Yup.object({
       'Password must contain 1 lowercase, 1 uppercase letter and 1 number.'
     ),
 });
+
+export const UpdateUserSchema = Yup.object({
+  avatarURL: Yup.string(),
+  name: Yup.string()
+    .min(2)
+    .matches(
+      /^[a-zA-Zа-яєїієґҐА-ЯЄЇІЄҐҐ'0-9]+$/,
+      'Name can only contain letters or numbers.'
+    ),
+});
+
+export const SubscribeSchema = Yup.object({
+  email: Yup.string()
+    .matches(/\S+@\S+\.\S+/, 'This is an ERROR email')
+    .required('Required'),
+});

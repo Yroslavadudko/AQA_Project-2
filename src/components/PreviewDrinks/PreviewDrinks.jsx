@@ -7,20 +7,19 @@ import { Cardwrapper, Section, SectionTitle } from './PreviewDrinks.styled';
 
 export const PreviewDrinks = ({ title, data = [] }) => {
   const linkTransform = encodeURIComponent(title);
-
   return (
     <Section>
       <Container>
-        <Link to={`/main/drinks/${linkTransform}`}>
+        <Link to={`/main/drinks/${linkTransform}`} state={{ from: `${title}` }}>
           <SectionTitle>{title}</SectionTitle>
         </Link>
         <Cardwrapper>
           <Swiper
+            loop={true} // infinite loop
             autoplay={{
               delay: 2000,
               disableOnInteraction: false,
             }}
-            rewind={true}
             modules={[Autoplay, Pagination, Navigation]}
             breakpoints={{
               320: {

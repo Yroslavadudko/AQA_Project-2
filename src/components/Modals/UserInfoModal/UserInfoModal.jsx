@@ -1,7 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTheme, selectUserArray } from 'redux/selectors';
-import * as Yup from 'yup';
+import { selectUserArray } from 'redux/selectors';
+import { UpdateUserSchema } from 'components';
+import { updateUserThunk } from 'redux/UserInfo/userOperations';
+import AddIcon from '../../../assets/icons/modals/user-info/add_photo.svg';
+import {
+  StyledError,
+  StyledMessage,
+} from 'components/Forms/RegisterForm/RegisterForm.styled';
 import {
   ModalWrapper,
   CloseButton,
@@ -17,29 +23,22 @@ import {
   StyledIconError,
   AddIconImg,
   StyledInputFile,
+  StyledUpdatedCloseButton,
 } from './UserInfoModal.styled';
-import {
-  StyledError,
-  StyledMessage,
-} from 'components/Forms/RegisterForm/RegisterForm.styled';
-import { updateUserThunk } from 'redux/UserInfo/userOperations';
-import XIcon from './x.svg';
-import XIconBlack from '../../../assets/icons/close.svg';
-
-import AddIcon from './add_photo.svg';
-const defaultAvatarURL = require('./user.png');
+const defaultAvatarURL = require('../../../assets/img/modals/user-info/user.png');
 
 export const UserInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
-  const theme = useSelector(selectTheme);
   const user = useSelector(selectUserArray);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true); //eslint-disable-line
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [imgURL, setImageURL] = useState('');
+
   useEffect(() => {
     const handleOutsideClick = event => {
       if (!event.target.closest('.modal-content')) {
-        onClose();
+        onClose(); // first time close (if modal in update user form)
+        onClose(); // second time close if user is on logout + edit selection
       }
     };
     window.addEventListener('mousedown', handleOutsideClick);
@@ -69,36 +68,28 @@ export const UserInfoModal = ({ onClose }) => {
       onClose();
     }
   };
+
   let avatar;
   if (imgURL) {
     avatar = imgURL;
-  } else if (user.avatarUrl) {
-    avatar = user.avatarUrl;
+  } else if (user.avatarURL) {
+    avatar = user.avatarURL;
   } else {
     avatar = defaultAvatarURL;
   }
+
   return isOpen ? (
     <ModalWrapper>
       <ContentWrapper className="modal-content">
         <CloseButton onClick={onClose} tabIndex={1} className="close-button">
-          <img
-            src={theme === 'dark' ? XIcon : XIconBlack}
-            alt="Close"
-            width={24}
-          />
+          <StyledUpdatedCloseButton width={24} height={24} />
         </CloseButton>
         <StyledForm
           initialValues={{
             avatarURL: '',
             name: user.name || '',
           }}
-          validationSchema={Yup.object({
-            avatarURL: Yup.string(),
-            name: Yup.string().matches(
-              /^[a-zA-Zа-яєїієґҐА-ЯЄЇІЄҐҐ'0-9]+$/,
-              'Name can only contain letters or numbers.'
-            ),
-          })}
+          validationSchema={UpdateUserSchema}
           onSubmit={handleOnSubmit}
         >
           {({ errors, touched, handleChange, setFieldTouched }) => (

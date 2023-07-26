@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { DrinkCard } from 'components/DrinkCard/DrinkCard';
+import { DrinkCard, NotFound } from 'components';
 import { selectOwn, selectPage } from 'redux/selectors';
-import { MyRecipesListStyled, Section } from './MyOwnRecipesList.styled';
 import { getAllOwnDrinksThunk } from 'redux/Cocktails/cocktailsOperations';
-import { NotFound } from '../NotFound/NotFound';
 import { useMediaRules } from 'hooks';
+import { MyRecipesListStyled, Section } from './MyOwnRecipesList.styled';
 
 export const MyOwnRecipesList = () => {
   const dispatch = useDispatch();
@@ -16,26 +14,24 @@ export const MyOwnRecipesList = () => {
   const limit = isDesktop ? 9 : 8;
 
   useEffect(() => {
-    // if (ownCocktails.length !== 0) return;
     dispatch(getAllOwnDrinksThunk({ page, limit }));
-  }, [page, limit]);
+  }, [page, limit, dispatch]);
 
   return (
     <Section>
-      <MyRecipesListStyled>
-        {ownCocktails.length !== 0 ? (
-          ownCocktails.map(ownCocktail => (
+      {ownCocktails.length !== 0 ? (
+        <MyRecipesListStyled>
+          {ownCocktails.map(ownCocktail => (
             <DrinkCard
               key={ownCocktail._id}
               page={'my'}
               cocktail={ownCocktail}
             />
-          ))
-        ) : (
-          // <p>Not found</p>
-          <NotFound message={"You haven't added any cocktail recipes yet"} />
-        )}
-      </MyRecipesListStyled>
+          ))}
+        </MyRecipesListStyled>
+      ) : (
+        <NotFound message={"You haven't added any cocktail recipes yet"} />
+      )}
     </Section>
   );
 };

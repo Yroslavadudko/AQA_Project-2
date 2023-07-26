@@ -1,23 +1,27 @@
 import { useState } from 'react';
 import { ConfirmLogout, UserInfoModal } from 'components';
-import pencilIcon from '../UserInfoModal/edit-2.svg';
-import pencilIconBlack from '../UserInfoModal/edit-black.svg';
-
+import { useSelector } from 'react-redux';
+import { selectTheme } from 'redux/selectors';
+import pencilIcon from '../../../assets/icons/modals/user-info/edit-2.svg';
+import pencilIconBlack from '../../../assets/icons/modals/user-info/edit-black.svg';
 import {
   ChangeProfileButton,
   LogOutButton,
   ModalContent,
   ModalWrapper,
 } from './UserLogoModal.styled';
-import { useSelector } from 'react-redux';
-import { selectTheme } from 'redux/selectors';
-export const UserLogoModal = ({ setEditProfileShown }) => {
+
+export const UserLogoModal = ({
+  setEditProfileShown,
+  setShowUserLogoModal,
+}) => {
   const theme = useSelector(selectTheme);
-  const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false);
+  const [isChangeProfileOpen, setIsChangeProfileOpen] = useState(false); //eslint-disable-line
   const [isConfirmLogoutOpen, setIsConfirmLogoutOpen] = useState(false);
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
   const handleOpenUserInfo = () => {
     setIsChangeProfileOpen(false);
+    setShowUserLogoModal(false);
     setIsUserInfoOpen(true);
     setEditProfileShown(true);
   };
@@ -32,6 +36,7 @@ export const UserLogoModal = ({ setEditProfileShown }) => {
   };
   const handleModalClick = e => {
     if (e.target === e.currentTarget) {
+      setShowUserLogoModal(false);
       setIsChangeProfileOpen(false);
       setIsConfirmLogoutOpen(false);
       setIsUserInfoOpen(false);

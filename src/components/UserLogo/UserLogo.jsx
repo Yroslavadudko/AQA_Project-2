@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectUser, selectUserArray } from 'redux/selectors';
+import { selectUserArray } from 'redux/selectors';
+import { UserLogoModal } from 'components';
 import {
   NameStyled,
   UserAvatar,
   UserAvatarWrp,
   UserLogoWrp,
 } from './UserLogoStyled';
-import { UserLogoModal } from 'components';
 
 export const UserLogo = () => {
   const [showUserLogoModal, setShowUserLogoModal] = useState(false);
@@ -18,13 +18,19 @@ export const UserLogo = () => {
     <UserLogoWrp onClick={() => setShowUserLogoModal(!showUserLogoModal)}>
       <UserAvatarWrp>
         <UserAvatar
-          src={user?.avatarURL || require('../../assets/img/useravatar_plug.png')}
+          src={
+            user?.avatarURL || require('../../assets/img/useravatar_plug.png')
+          }
           alt="avatar"
         />
       </UserAvatarWrp>
       <NameStyled>{user?.name || 'no Name'}</NameStyled>
       {(showUserLogoModal || editProfileShown) && (
-        <UserLogoModal setEditProfileShown={setEditProfileShown} />
+        <UserLogoModal
+          setEditProfileShown={setEditProfileShown}
+          setShowUserLogoModal={setShowUserLogoModal}
+        />
       )}
     </UserLogoWrp>
-  );};
+  );
+};

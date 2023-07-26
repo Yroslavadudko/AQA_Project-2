@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { nanoid } from '@reduxjs/toolkit';
@@ -15,12 +15,13 @@ import {
   addRecipeThunk,
   getIngredientsListThunk,
 } from 'redux/Cocktails/cocktailsOperations';
-import { StyledAddButton, StyledForm } from './AddRecipeForm.styled';
 import {
   RecipeDescriptionFields,
   RecipeIngredientsFields,
   RecipePreparationFields,
+  ReusableButton,
 } from 'components';
+import { StyledForm } from './AddRecipeForm.styled';
 
 export const AddRecipeForm = () => {
   const dispatch = useDispatch();
@@ -79,7 +80,6 @@ export const AddRecipeForm = () => {
   };
 
   const handleIncIngredients = () => {
-    // console.log(cocktailIngredientsList);
     setCocktailIngredientsList(p => {
       return [
         ...p,
@@ -203,7 +203,11 @@ export const AddRecipeForm = () => {
             dataField={instructions}
             handleOnInstructions={handleOnInstructions}
           />
-          <StyledAddButton type="submit">Add</StyledAddButton>
+          <ReusableButton
+            type="submit"
+            text="Add"
+            ariaLabel="Adding recipe button"
+          />
         </StyledForm>
       </Formik>
     </>

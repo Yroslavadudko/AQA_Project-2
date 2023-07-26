@@ -43,12 +43,11 @@ export const RecipePageHero = ({ func }) => {
               )}
             </div>
             <div>
-              {' '}
               <StyledImage
                 src={
                   cocktails.drinkThumb
                     ? cocktails.drinkThumb
-                    : require('../../assets/img/testPNG.png')
+                    : require('../../assets/img/RecipePlaceholder.png')
                 }
                 alt="cocktail thumb"
                 width={400}
