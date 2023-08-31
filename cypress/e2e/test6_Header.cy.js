@@ -1,7 +1,7 @@
 describe('Sign In and Check Elements', () => {
   beforeEach(() => {
     // Opening the login page
-    cy.visit('http://localhost:3000/TeamName-project/signin');
+    cy.visit("https://magisterunivers.github.io/TeamName-project/signin");
   });
 
   it('should sign in with email and password, then check page elements', () => {
